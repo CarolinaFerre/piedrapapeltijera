@@ -1,0 +1,157 @@
+package metodosverano;
+import java.util.Scanner;
+public class piedrapapeltijera {
+static Scanner sc=new Scanner(System.in);
+static final int PIEDRA= 1;
+static final int PAPEL= 2;
+static final int TIJERAS= 3;
+static int valorordena = 0;
+static int valorordenaganador=0;
+
+
+	public static void calcularGanador ( int jugador1, int jugador2) {
+		//Ver quién gana si jugador 1 o 2 eligiendo los valores el usuario
+		
+		if((jugador1==1)|(jugador1==2)|(jugador1==3)) {
+			System.out.println("PROCESANDO TU ELECCIÓN...");
+		}else {
+			System.out.println("ELECCIÓN NO DISPONIBLE. VUELVE A INTENTARLO");
+		}
+	
+			
+		if (jugador1==1) {
+			if(jugador2==3) {
+			System.out.println("devuelve  1 (El jugador 1 gana porque PIEDRA gana a TIJERA)");
+			
+			}
+		}
+		if(jugador1==1) {
+				if(jugador2==2) {
+					System.out.println("devuelve  2 ( El jugador 2 gana porque PAPEL gana a PIEDRA)");
+					
+				}
+		}
+		if(jugador1==2) {
+				if(jugador2==2) {
+					System.out.println("devuelve 0 ( Ninguno gana PAPEL y PAPEL)");
+				
+				}
+			}
+		if (jugador1==2) {
+			if(jugador2==3) {
+			System.out.println("devuelve  2 (El jugador 2 gana porque TIJERA corta PAPEL)");
+			
+			}
+		}
+		if (jugador1==2) {
+			if(jugador2==1) {
+			System.out.println("devuelve  1 (El jugador 1 gana porque PAPEL envuelve a 	PIEDRA)");
+			
+			}
+		}
+		if (jugador1==1) {
+			if(jugador2==1) {
+			System.out.println("devuelve  0 (Ninguno gana) ");
+			
+			}
+		}
+		if (jugador1==3) {
+			if(jugador2==3) {
+			System.out.println("devuelve  0 (Ninguno gana)");
+			
+			}
+		}
+		if (jugador1==3) {
+			if(jugador2==2) {
+			System.out.println("devuelve  1 (El jugador 1 gana porque TIJERA corta PAPEL)");
+			
+				}
+			}
+	}
+		public static void generarValor() {
+			//Genera número aleatorio el ordenador
+			valorordena=(int) (Math.random()*3+1);
+			System.out.println("El valor aleatorio generado por el ordena es= "+valorordena);
+		}
+	
+		public static void generarValorganador(int valorusuario) {
+			//ordenador hace trampas,coge el valor ganador en función de lo que elige usuario
+		
+		switch(valorusuario) {
+		case 1:
+			if(valorusuario==1) {
+				valorordenaganador=2;
+				System.out.println("PROCESANDO JUGADA...");
+				System.out.println("Tú has elegido piedra y el ordena papel");
+				System.out.println("El ordena gana porque papel envuelve a piedra, perdiste la partida :(");
+			}
+			break;
+		case 2:
+			if(valorusuario==2) {
+				valorordenaganador=1;
+				System.out.println("PROCESANDO JUGADA...");
+				System.out.println("Tú has elegido papel y el ordena elije piedra");
+				System.out.println("El usuario gana porque papel envuelve a piedra, ganaste la partida :)");
+			
+			}
+			break;
+		case 3:
+			if(valorusuario==3) {
+				valorordenaganador=1;
+				System.out.println("PROCESANDO JUGADA...");
+				System.out.println("Tú has elegido tijeta y el ordena piedra");
+				System.out.println("El ordena gana porque piedra machaca tijera, perdiste la partida :(");
+			}
+		default:
+			System.out.println("Formato no válido, inténtalo de nuevo");
+			
+			}
+		}
+	
+	
+	
+	
+	public static void main(String[] args) {
+		// Prueba del juego piedra papel y tijera
+		System.out.println("BIENVENIDO AL JUEGO DE PIEDRA, PAPEL Y TIJERA");
+		//Procedimiento en el que el usuario elige la opción para jugar
+		int jugador1;
+		int jugador2;
+		System.out.println("COMENCEMOS PARTIDA ENTRE DOS JUGADORES");
+		System.out.println("**************************************");
+		System.out.println("HAY 3 JUGADAS");
+		int contador=0;
+		do {
+		System.out.println("Introduce un valor [1,2 o 3] para jugador 1");
+			jugador1=sc.nextInt();
+		System.out.println("Introduce un valor [1,2 o 3] para jugador 2");
+			jugador2=sc.nextInt();
+		System.out.println("Y EL GANADOR ES...");
+		piedrapapeltijera.calcularGanador(jugador1, jugador2);
+		contador++;
+		System.out.println(" ");
+		}
+		while(contador!=3);
+		System.out.println("-----------------------------------------");
+		System.out.println("El ordenador va a generar números aleatorios");
+		piedrapapeltijera.generarValor();
+		System.out.println(" ");
+		System.out.println("-----------------------------------------");
+		System.out.println("Resultado de la jugada de jugador y ordenador");
+		//ordenador hace trampas,coge el valor ganador en función de lo que elige usuario
+		System.out.println("PARTIDA USUARIO Y ORDENADOR");
+		System.out.println("***************************");
+		System.out.println("HAY 3 JUGADAS");
+		int contadorordena=0;
+		do {
+		System.out.println("Introduce un valor [1,2 o 3]");
+		int valorusuario=sc.nextInt();
+		piedrapapeltijera.generarValorganador(valorusuario);
+		contadorordena++;
+		}
+		while(contadorordena!=3);
+		System.out.println("-----------------------------------------");
+		System.out.println("FIN DEL JUEGO...GAME OVER");
+		}
+	
+	}
